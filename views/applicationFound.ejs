@@ -1,0 +1,101 @@
+<%- include("top") -%>
+
+<section class="main">
+  <div class="container body-container">
+    <div class="row mx-auto button-area">
+      <form action="/shift-change" method="post" id="search-form">
+        <div class="form-group row">
+          <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
+          <div class="col-sm-10">
+            <input
+              type="number"
+              class="form-control border-success"
+              id="mobile"
+              name="mobile"
+              value="<%= mobile %>"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="email" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input
+              type="email"
+              class="form-control border-success"
+              id="email"
+              name="email"
+              value="<%= email %>"
+              required
+              disabled
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-success" disabled>
+              Find my registration
+            </button>
+          </div>
+        </div>
+        <div class="info mt-5">
+          <p>Hey <%= name %>.<br>Your current batch timing is <b><%= shift%></b></p>
+          <p>Which batch works best for you?</p>
+
+          <div class="row">
+            <div class="form-check">
+              <input
+                type="number"
+                class="form-control border-success d-none"
+                id="mobile"
+                name="mobile"
+                value="<%= mobile %>"
+              />
+              <input
+                type="email"
+                class="form-control border-success d-none"
+                id="email"
+                name="email"
+                value="<%= email %>"
+              />
+              <input
+                type="text"
+                class="form-control border-success d-none"
+                id="name"
+                name="name"
+                value="<%= name %>"
+              />
+              <input
+                type="radio"
+                name="shift"
+                id="6to7am"
+                value="6-7 am"
+                required
+              />
+              <label class="form-check-label" for="6to7am"> 6-7 am </label>
+              <input type="radio" name="shift" id="7to8am" value="7-8 am" />
+              <label class="form-check-label" for="7to8am"> 7-8 am </label>
+              <input type="radio" name="shift" id="8to9am" value="8-9 am" />
+              <label class="form-check-label" for="8to9am"> 8-9 am </label
+              ><br />
+              <input type="radio" name="shift" id="5to6pm" value="5-6 pm" />
+              <label class="form-check-label" for="5to6pm"> 5-6 pm </label>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript"  nonce="5cyFsHuUkqyeish1LJEoKZYZDYRvz2TsZ0VzsB46cc=">
+  // ------------- to disable batch time in which applicant is already enrolled --------------
+    var batch = "<%= shift %>";
+    var id = batch[0] + "to" + batch[2] + batch[4] + batch[5]; // ex: convert '5-6 am' to 5to6am
+    console.log(id);
+    var element = document.getElementById(id);
+    element["disabled"] = true;
+</script>
+
+<%- include("bottom") -%>

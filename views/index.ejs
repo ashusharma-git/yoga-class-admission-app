@@ -1,0 +1,139 @@
+<%- include("top") -%>
+
+<section class="main">
+  <div class="container body-container">
+    <div class="row mx-auto button-area">
+      <div
+        style="
+          width: 100%;
+          text-align: center;
+          font-weight: 500;
+          font-size: 19px;
+        "
+      >
+        <p>Yoga class admission from</p>
+        <hr />
+      </div>
+      <form action="register" method="POST" id="search-form">
+        <div class="form-group row">
+          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control border-success"
+              id="name"
+              name="name"
+              placeholder="Name"
+              required
+              minlength="4"
+            />
+          </div>
+        </div>
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input
+                  type="radio"
+                  name="gender"
+                  id="female"
+                  value="female"
+                  required
+                />
+                <label class="form-check-label" for="female"> Female </label>
+                <input
+                  type="radio"
+                  name="gender"
+                  id="male"
+                  value="male"
+                  required
+                />
+                <label class="form-check-label" for="male"> Male </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group row">
+          <label for="age" class="col-sm-2 col-form-label">Age</label>
+          <div class="col-sm-10">
+            <input
+              type="number"
+              min="18"
+              max="65"
+              class="form-control border-success"
+              id="age"
+              name="age"
+              placeholder="Age"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
+          <div class="col-sm-10">
+            <input
+              type="number"
+              class="form-control border-success"
+              id="mobile"
+              name="mobile"
+              placeholder="Mobile"
+              minlength="10"
+              maxlength="10"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="email" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input
+              type="email"
+              class="form-control border-success"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+        </div>
+        <fieldset class="form-group">
+          <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Shift</legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input
+                  type="radio"
+                  name="shift"
+                  id="6to7am"
+                  value="6-7 am"
+                  required
+                />
+                <label class="form-check-label" for="6to7am"> 6-7 am </label>
+                <input type="radio" name="shift" id="7to8am" value="7-8 am" />
+                <label class="form-check-label" for="7to8am"> 7-8 am </label>
+                <input type="radio" name="shift" id="8to9am" value="8-9 am" />
+                <label class="form-check-label" for="8to9am"> 8-9 am </label
+                ><br />
+                <input type="radio" name="shift" id="5to6pm" value="5-6 pm" />
+                <label class="form-check-label" for="5to6pm"> 5-6 pm </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-success">Proceed</button>
+          </div>
+          <div class="col">
+            <a href="/shift-change" class="shift-change"
+              >Want to change batch for this month?</a
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<%- include("bottom") -%>
