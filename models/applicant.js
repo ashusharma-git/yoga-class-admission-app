@@ -40,6 +40,10 @@ const Applicant = sequelize.define(
       allowNull: false,
       defaultValue: new Date(),
     },
+    payment_status: {
+      type: Sequelize.STRING,
+      defaultValue: "NOT_PAID"
+    }
   },
   { timestamps: false }
 );

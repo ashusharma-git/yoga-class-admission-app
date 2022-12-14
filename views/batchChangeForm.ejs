@@ -3,7 +3,7 @@
 <section class="main">
   <div class="container body-container">
     <div class="row mx-auto button-area">
-      <form action="/shift-change" method="post" id="search-form">
+      <form action="/shift-change" method="post">
         <div class="form-group row">
           <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
           <div class="col-sm-10">
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="info mt-5">
-          <p>Hey <%= name %>.<br>Your current batch timing is <b><%= shift%></b></p>
+          <p>Hey <%= name %>.<br>Your current batch timing is <b><%= batch %></b></p>
           <p>Which batch works best for you?</p>
 
           <div class="row">
@@ -91,7 +91,7 @@
 
 <script type="text/javascript"  nonce="5cyFsHuUkqyeish1LJEoKZYZDYRvz2TsZ0VzsB46cc=">
   // ------------- to disable batch time in which applicant is already enrolled --------------
-    var batch = "<%= shift %>";
+    var batch = "<%= batch %>";
     var id = batch[0] + "to" + batch[2] + batch[4] + batch[5]; // ex: convert '5-6 am' to 5to6am
     console.log(id);
     var element = document.getElementById(id);

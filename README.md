@@ -40,7 +40,17 @@ To run this app in docker container:
 
 
 ## About the application and its design
-Home page of this web app serves the form to submit in order to join yoga-session.
+Feature:
+
+1. New Registration
+2. Batch Change
+3. Fee payment (monthly basis)
+
+Home page of this web app serves the form, followed by payment page in order to join yoga-session. Anyone who do not complete payment can pay any time by clicking on `Fee Payment` button on home page. 
+
+`Fee Payment` will first check payment status, if not done, then only it will proceed to payment page.
+
+`Batch change` will give option to change batch. In this process, first it check the payment status, if it is `PAID` only then it will allow to change bacth.
 
 There are three tables in one database, namely- applicant, batch, payment.
 
@@ -48,6 +58,7 @@ Once the form is submitted, applicant's details is populated in `applicant table
 
 Batch table has an entity named `has_changed` which has value either `0` or `1`. `0` means applicant has not changed their batch time in the current month, therefore that applicant is eligible to change their batch shift. If applicant request to change their time then first it checks in table, if `has_changed` column is `1` then she/he is not eligible to change their time in that particular, though he/she can change it in next month. When applicant changes their batch, value for `has_changed` column is changed to `1`.
 
+Below is the ER diagram containing entities and attributes
 ![ER Diagram](./public/er-diagram.png)
 
 Relationship Cardinality between `Applicant` and `Batch` is `Mandatory One`, since each applicant can be enrolled in only one batch.
@@ -56,7 +67,7 @@ Relationship Cardinality between `Applicant` and `Payment` is `Optionally Many`,
 
 As of now, when applicant submit the admission form `makePayment()` function is there which can be later implemented to make actual payment; currently this only inserts payment details with randomly generated transaction id.
 
-There is a monthly cronjob which runs at `00:00 am` on first day of the every month. This makes changes in `batch table`. All the record are set to `0` for `has_changed` column, so that all applicants are once eligible for batch change in every month.
+There is a monthly cronjob which runs at `00:00 am` on first day of the every month. This makes changes in `batch table` and `applicant table`. All the record are set to `0` for `has_changed` column in batch table, so that all applicants are once eligible for batch change in every month. Everyone needs to pay fee monthly, so `payment_status` column is set to `NOT_PAID` applicant table such that all can make fee payment through option available on home page. In future, cronjob can also be implemented to send monthly fee payment remider via email to all.
 
 ## Technology used
 >Node.js, Express.js, EJS, HTML, CSS, Bootstarp, MySQL db, Sequelize, Cronjob, Docker

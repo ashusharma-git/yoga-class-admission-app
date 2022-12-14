@@ -6,12 +6,14 @@ require("./util/db_conn")();
 require("./util/monthly_cronjob");
 const helmet = require("helmet");
 
-
-const home = require("./controller/homeController");
-const register = require("./controller/registerController");
+const validation = require("./middleware/validation");
+const home = require("./controller/home");
+const register = require("./controller/register");
 const batchChangeForm = require("./controller/batchChangeForm");
 const findApplication = require("./controller/findApplication");
 const batchChange = require("./controller/batchChange");
+const makePayment = require("./controller/makePayment");
+const paymentForm = require("./controller/paymentForm");
 
 const sequelize = require("./util/sequelize_conf");
 
@@ -33,12 +35,13 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(helmet());
 
-
 app.get("/", home);
+app.post("/register", validation, register);
 app.get("/shift-change", batchChangeForm);
-app.post("/register", register);
 app.post("/find-application", findApplication);
 app.post("/shift-change", batchChange);
+app.get("/payment", paymentForm);
+app.post("/make-payment", makePayment);
 
 app.listen(PORT, () => {
   console.log("server running on PORT: ", PORT);

@@ -1,0 +1,67 @@
+<%- include("top") -%>
+
+<section class="main">
+  <div class="container body-container">
+    <div class="row mx-auto button-area">
+        <div class="">
+            <p>Hey <b><%= name %></b></p>
+            <p>
+                You are registered for <b><%= batch %> batch</b>.<br/>
+                Please pay application fee: ₹<b><%= amount %></b>.
+            </p>
+            <form action="make-payment" method="POST">
+                <div class="row">
+                    <div class="form-check">
+                      <input
+                        type="number"
+                        class="form-control border-success d-none"
+                        id="id"
+                        name="id"
+                        value="<%= id %>"
+                      />
+                      <input
+                        type="text"
+                        class="form-control border-success d-none"
+                        id="name"
+                        name="name"
+                        value="<%= name %>"
+                      />
+                      <input
+                        type="text"
+                        class="form-control border-success d-none"
+                        id="batch"
+                        name="batch"
+                        value="<%= batch %>"
+                      />
+                      <input
+                        type="number"
+                        class="form-control border-success d-none"
+                        id="amount"
+                        name="amount"
+                        value="<%= amount %>"
+                      />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-success">Pay Now</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      <div
+        style="
+          width: 100%;
+          text-align: center;
+          font-weight: 500;
+          font-size: 19px;
+        "
+      >
+        <hr />
+        <p>serve . love . give</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include("bottom") -%>
